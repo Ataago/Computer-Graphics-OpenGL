@@ -85,7 +85,7 @@ void draw_circle(int h, int k, double radius)
         
         if (d < 0)  // Move East
         {
-            d += (2 * x) + 3;
+            d += (2 * x) + 5;
             x++;
         }
         else    // Move South East
