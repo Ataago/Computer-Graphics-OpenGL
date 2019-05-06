@@ -24,12 +24,12 @@ GLfloat colors[] = {
 
 GLfloat vertices[] = {
     -1, -1, -1,
-     1, -1, -1,
-     1,  1, -1,
+    1, -1, -1,
+    1,  1, -1,
     -1,  1, -1,
     -1, -1,  1,
-     1, -1,  1,
-     1,  1,  1,
+    1, -1,  1,
+    1,  1,  1,
     -1,  1,  1
 };
 
@@ -56,6 +56,7 @@ GLubyte cubeIndices[] = {
 int axis = 0;
 int theta[] = {0, 0, 0};
 
+void myReshape(int w, int h);
 void myDisplay();
 void myMouse(int button, int state, int x, int y);
 void myIdle();
@@ -78,6 +79,7 @@ int main(int argc, char **argv)
     glutCreateWindow("program 7");
     
     myInit();
+    glutReshapeFunc(myReshape);
     glutDisplayFunc(myDisplay);
     glutMouseFunc(myMouse);
     glutIdleFunc(myIdle);
@@ -94,6 +96,19 @@ int main(int argc, char **argv)
     return 0;
 }
 
+void myReshape(int w, int h)
+{
+    double aspect_ratio = w / h;
+    
+    glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    if (w > h)
+        glOrtho(-2 * aspect_ratio, 2 * aspect_ratio, -2, 2, -2, 2);
+    else
+        glOrtho(-2, 2, -2 / aspect_ratio, 2 / aspect_ratio, -2, 2);
+    glMatrixMode(GL_MODELVIEW);
+}
 void myDisplay()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
