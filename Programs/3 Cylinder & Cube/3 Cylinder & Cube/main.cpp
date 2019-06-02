@@ -28,8 +28,6 @@ void draw_parallelogram(int x1, int y1, int x2, int y2, int x3, int y3, int x4, 
 
 void myInit()
 {
-    glEnable(GL_DEPTH_TEST);
-    
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-500, 500, -500, 500, -500, 500);
@@ -39,11 +37,12 @@ void myInit()
 int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);    // Single buffer with RGB colors
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);    // Single buffer with RGB colors
     
     glutInitWindowPosition(50, 0);     // Postion of Window on my Screen wrt to top left corner
     glutInitWindowSize(1000, 1000);   // Window Size wrt to pixels
     glutCreateWindow("Program 2");
+    
     myInit();
     glutDisplayFunc(myDisplay);
     glutMainLoop();
@@ -53,11 +52,11 @@ int main(int argc, char **argv)
 
 void myDisplay()
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
     
-    glPointSize(1);
+    glPointSize(1);     // For drawing a circle
     
-    draw_cylinder(15);      // Draw a cyliner
+    draw_cylinder(1);      // Draw a cyliner
     draw_cuboid(15);        // Draw Parallelopiped
     
     glFlush();
@@ -120,11 +119,11 @@ void draw_cuboid(int height)
     int x1 = -250, y1 = -250, x2 = -100, y2 = -250, x3 = -100, y3 = -100, x4 = -250, y4 = -100;
     
     
-    for (int y = 0; y < height; y++)
+    for (int y = 0; y < height * 5; y += 5)
     {
-        y *= 5;    // increasing the distance betwwen succesive parallelograms
+        //y *= 5;    // increasing the distance betwwen succesive parallelograms
         draw_parallelogram(x1 + y, y1 + y, x2 + y, y2 + y, x3 + y, y3 + y, x4 + y, y4 + y);
-        y /= 5;    // Restoring the value of y
+        //y /= 5;    // Restoring the value of y
     }
 }
 

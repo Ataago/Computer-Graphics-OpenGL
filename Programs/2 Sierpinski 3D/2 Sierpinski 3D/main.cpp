@@ -10,7 +10,7 @@
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"  // Remove deprecation warnings in MacOS
 
 #include <GLUT/GLUT.h>
-int n = 3;   // Times the Tetrahedron is Recursivily Divided
+int n = 0;   // Times the Tetrahedron is Recursivily Divided
 double vertices[4][3] = {{0, 0, 250}, {-250, -200, 0}, {250, -200, 0}, {0, 250, 0}};    // A, B, C, D
 double colors[4][3] = {{1, 0 ,0}, {0, 1, 0}, {0, 0, 1}, {0, 0, 0}}; // R G B black
 
@@ -36,9 +36,10 @@ int main(int argc, char **argv)
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);    // Single buffer with RGB colors
     
-    glutInitWindowPosition(50, 0);     // Postion of Window on my Screen wrt to top left corner
+    glutInitWindowPosition(75, 0);     // Postion of Window on my Screen wrt to top left corner
     glutInitWindowSize(1000, 1000);   // Window Size wrt to pixels
     glutCreateWindow("Program 2");
+    
     myInit();
     glutDisplayFunc(myDisplay);
     glutMainLoop();
@@ -51,7 +52,7 @@ void myDisplay()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glBegin(GL_TRIANGLES);
-    div_tetrahedron(vertices[0], vertices[1], vertices[2], vertices[3], n);
+    div_tetrahedron(vertices[0], vertices[1], vertices[2], vertices[3], n);     // Recursive function
     glEnd();
     
     glFlush();
@@ -80,7 +81,7 @@ void div_tetrahedron(double A[3], double B[3], double C[3], double D[3], int n)
         div_tetrahedron(A, AB, CA, AD, n - 1);  // Top Tetra
         div_tetrahedron(AB, B, BC, BD, n - 1);  // Left Tetra
         div_tetrahedron(CA, BC, C, CD, n - 1);  // Righ Tetra
-        div_tetrahedron(AD, BD, CD, D, n - 1);  // Behind Tetra
+        div_tetrahedron(AD, BD, CD, D, n - 1);  // Bottom Tetra
     }
 }
 
@@ -94,7 +95,7 @@ void draw_tetrahedron(double A[3], double B[3], double C[3], double D[3])
 
 void draw_triangle(double A[3], double B[3], double C[3])
 {
-    glVertex2dv(A);
-    glVertex2dv(B);
-    glVertex2dv(C);
+    glVertex3dv(A);
+    glVertex3dv(B);
+    glVertex3dv(C);
 }

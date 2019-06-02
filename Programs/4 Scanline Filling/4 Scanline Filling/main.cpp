@@ -80,6 +80,8 @@ void scanline_Filling(int x1, int y1, int x2, int y2, int x3, int y3, int x4, in
     edge_Detect(x3, y3, x4, y4);
     edge_Detect(x4, y4, x1, y1);
     
+    
+    // Printing polygon
     for (int y = 0; y < 500; y++)
     {
         if (left_edge[y] <= right_edge[y])
