@@ -100,7 +100,7 @@ bool cliptest(double p, double q)
 {
     double t = q / p;
     
-    if (p == 0 && q < 0)
+    if (p == 0 && q < 0)    // Line is parallel to viewport and outside
     {
         return false;
     }
@@ -128,9 +128,9 @@ void liangBarsky(double x1, double y1, double x2, double y2)
     
     /*
      -t * dx < x1 - x_min        ... [1]
-     t * dx < x_max - x1        ... [2]
+      t * dx < x_max - x1        ... [2]
      -t * dy < y1 - y_min        ... [3]
-     t * dy < y_max - y1        ... [4]
+      t * dy < y_max - y1        ... [4]
      */
     if (cliptest(-dx, x1 - x_min) && cliptest(dx, x_max - x1) && cliptest(-dy, y1 - y_min) && cliptest(dy, y_max - y1))
     {

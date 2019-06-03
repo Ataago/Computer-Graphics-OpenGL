@@ -37,7 +37,8 @@ int main(int argc, char **argv)
     glEnable(GL_DEPTH_TEST);
     
     glShadeModel(GL_SMOOTH);
-    glEnable(GL_NORMALIZE);
+    glEnable(GL_NORMALIZE);     // Normal vectors are normalized to unit length after transformation and before lighting.
+    glEnable(GL_COLOR_MATERIAL);
     
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
@@ -69,7 +70,7 @@ void myDisplay()
     glMaterialfv(GL_FRONT, GL_SHININESS, mat_shinniness);
     
     GLfloat light_int[] = {1, 1, 1, 1};
-    GLfloat light_pos[] = {10, 10, 10, 0};
+    GLfloat light_pos[] = {-10, 20, 10, 1};
     
     glLightfv(GL_LIGHT0, GL_DIFFUSE, light_int);
     glLightfv(GL_LIGHT0, GL_POSITION, light_pos);

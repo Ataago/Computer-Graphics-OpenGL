@@ -24,23 +24,23 @@ GLfloat colors[] = {
 
 GLfloat vertices[] = {
     -1, -1, -1,
-    1, -1, -1,
-    1,  1, -1,
+     1, -1, -1,
+     1,  1, -1,
     -1,  1, -1,
     -1, -1,  1,
-    1, -1,  1,
-    1,  1,  1,
+     1, -1,  1,
+     1,  1,  1,
     -1,  1,  1
 };
 
 GLfloat normals[] = {
     -1, -1, -1,
-    1, -1, -1,
-    1,  1, -1,
+     1, -1, -1,
+     1,  1, -1,
     -1,  1, -1,
     -1, -1,  1,
-    1, -1,  1,
-    1,  1,  1,
+     1, -1,  1,
+     1,  1,  1,
     -1,  1,  1
 };
 
@@ -88,6 +88,7 @@ int main(int argc, char **argv)
     glEnableClientState(GL_COLOR_ARRAY);
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
+    
     glColorPointer(3, GL_FLOAT, 0, colors);
     glVertexPointer(3, GL_FLOAT, 0, vertices);
     glNormalPointer(GL_FLOAT, 0, normals);

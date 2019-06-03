@@ -12,11 +12,11 @@
 #include <GLUT/GLUT.h>
 
 // M x N rectangluar mesh
-#define MAX_X 5
-#define MAX_Y 25
+#define MAX_X 15
+#define MAX_Y 15
 
 // W x H of Rectangle (width x Height)
-#define CELL_W 100
+#define CELL_W 20
 #define CELL_H 20
 
 void myDisplay();

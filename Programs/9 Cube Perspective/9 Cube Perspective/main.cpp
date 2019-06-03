@@ -85,7 +85,7 @@ void myReshape(int w, int h)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     if (w > h)
-        glFrustum(-2, 2, -2 * aspect_ratio, 2 * aspect_ratio, 1, 20);
+        glFrustum(-2 * aspect_ratio, 2 * aspect_ratio, -2, 2, 1, 20);
     else
         glFrustum(-2, 2, -2 / aspect_ratio, 2 / aspect_ratio, 1, 20);
     glMatrixMode(GL_MODELVIEW);
@@ -134,3 +134,4 @@ void myIdle()
         theta[axis] -= 360;
     glutPostRedisplay();
 }
+

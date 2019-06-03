@@ -16,8 +16,8 @@ double y_max = 100, y_min = 50, x_max = 100, x_min = 50;   // Old viewport
 double ny_max = 300, ny_min = 200, nx_max = 300, nx_min = 200; // New clipped ViewPort
 int TOP = 8, BOTTOM = 4, RIGHT = 2, LEFT = 1;
 
-double x1 = 10, y1 = 80;    // Point 1
-double x2 = 100, y2 = 120;  // Point 2
+double x1 = 10, y1 = 120;    // Point 1
+double x2 = 120, y2 = 50;  // Point 2
 
 void myInit();
 void myDisplay();
@@ -58,6 +58,7 @@ void myDisplay()
 
 void draw_lineAndPort(double x1, double y1, double x2, double y2, double y_max, double y_min, double x_max, double x_min)
 {
+    // Viewposrt
     glColor3d(1, 0, 0);
     glBegin(GL_LINE_LOOP);
     glVertex2d(x_min, y_min);
@@ -66,6 +67,7 @@ void draw_lineAndPort(double x1, double y1, double x2, double y2, double y_max, 
     glVertex2d(x_min, y_max);
     glEnd();
     
+    // Line
     glColor3d(1, 1, 1);
     glBegin(GL_LINES);
     glVertex2d(x1, y1);
@@ -80,6 +82,7 @@ int outcode(double x, double y)
         outcode |= TOP;
     else if (y < y_min)
         outcode |= BOTTOM;
+    
     if (x > x_max)
         outcode |= RIGHT;
     else if (x < x_min)
